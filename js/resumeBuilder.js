@@ -1,8 +1,11 @@
-// Udacity - Project 2: Resume Builder
+// Udacity - Project 2: Interactive Resume
 // Kris Hamilton - April 2015
+// - Resourced information and guidance from Udacity Forums, Udacity Courses, Google, Github and prior knowledge
 
 
-// Storing JSON data/objects for Bio into a variable called 'bio'
+//Here we go...
+
+// Storing JSON data/objects for Bio into an object called 'bio'
 var bio = {
 	"name": "Kris Hamilton",
 	"role": "Digital Jedi",
@@ -13,12 +16,12 @@ var bio = {
 		"twitter": "@AKStudioDev",
 		"location": "Wellington, NZ"
 	},
-	"welcomeMessage": "A website developer, musician and Pebbler",
+	"welcomeMessage": "A Business Analyst, Web Developer, Musician and Pebbler",
 	"skills": ["Business Analysis", "HTML/CSS", "PHP/MySQL", "Pebble Development", "Digital Jedi"],
 	"bioPic": "images/kris.jpg"
 }
 
-// Function to append Bio from the 'bio' JSON data/objects
+// Function to append Bio data/objects from the 'bio' object
 bio.display = function() {
 	var formattedName = HTMLheaderName.replace("%data%", bio.name);
 	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
@@ -32,6 +35,7 @@ bio.display = function() {
 	var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
 	var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 
+	// Found this was a quicker way to append multiple objects to an id
 	$("#topContacts")
 		.append(formattedMobile)
         .append(formattedEmail)
@@ -62,7 +66,7 @@ bio.display = function() {
 	}
 }
 
-// Storing JSON data/objects for Work into a variable called 'work'
+// Storing JSON data/objects for Work into an object called 'work'
 var work = {
 	"jobs": [
 		{
@@ -70,7 +74,7 @@ var work = {
 			"title": "Business Analyst",
 			"location": "Wellington",
 			"dates": "2014 - Present",
-			"description": "Working on the Business Improvement Project to capture, map and improve the current state processes"
+			"description": "Working on the Business Improvement Project to capture, map and improve the current state processes using the Lean methodology"
 		},
 		{
 			"employer": "BP Oil NZ Ltd",
@@ -82,7 +86,7 @@ var work = {
 	]
 }
 
-// Function to append Work from the 'work' JSON data/objects
+// Function to append Work data/objects from the 'work' object
 work.display = function() {
 	for (job in work.jobs) {
 		$("#workExperience").append(HTMLworkStart);
@@ -94,20 +98,16 @@ work.display = function() {
 		$(".work-entry:last").append(formattedEmployerTitle);
 
 		var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
-		$(".work-entry:last").append(formattedDates);
-
 		var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-		$(".work-entry:last").append(formattedLocation);
-		
-	
 		var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+		
+		$(".work-entry:last").append(formattedDates);
+		$(".work-entry:last").append(formattedLocation);
 		$(".work-entry:last").append(formattedDescription);
-
 	}
-
 }
 
-// Storing JSON data/objects for Education into a variable called 'education'
+// Storing JSON data/objects for Education into an object called 'education'
 var education = {
 	"schools": [
 		{
@@ -135,7 +135,7 @@ var education = {
 	]
 }
 
-// Function to append Education from the 'education' JSON data/objects
+// Function to append Education data/objects from the 'education' object
 education.display = function(){
     education.schools.forEach(function(school) {
         $("#education").append(HTMLschoolStart);
@@ -168,13 +168,13 @@ education.display = function(){
     }
 };
 
-// Storing JSON data/objects for Projects into a variable called 'projects'
+// Storing JSON data/objects for Projects into an object called 'projects'
 var projects = {
 	"projects": [
 		{
 			"title": "Destiny Pebble Tracker",
 			"dates": "06-04-2015",
-			"description": "Destiny tracker for up to date information on your characters, including: <br /> -Power Level, <br /> -Glimmer, <br /> -Grimoire Score, <br /> -Vanguard/Cruicible/Cryptarch levels and progression, <br /> -Primary and Secondary stats.",
+			"description": "Destiny tracker for up to date information on your characters, including: <br /> - Power Level <br /> - Glimmer <br /> - Grimoire Score <br /> - Vanguard/Cruicible/Cryptarch levels and progression <br /> - Primary and Secondary stats",
 			"images": ["images/pebble.jpg"]
 		},
 		{
@@ -186,7 +186,7 @@ var projects = {
 	]
 }
 
-// Function to append Projects from the 'projects' JSON data/objects
+// Function to append Projects data/objects from the 'projects' object
 projects.display = function() {
 	for(project in projects.projects) {
 		$("#projects").append(HTMLprojectStart);
