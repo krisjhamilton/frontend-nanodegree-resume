@@ -1,1 +1,1 @@
-## Frontend Nano-Degree Resume
+## Project 2: Interactive Resume
