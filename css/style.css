@@ -15,7 +15,7 @@
 
 h1 {
   font-size: 40px;
-  color: #F5A623;
+  color: #0071b5 !important;
   line-height: 48px;
   display: inline;
 }
@@ -23,7 +23,7 @@ h1 {
 h2 {
   font-weight: bold;
   font-size: 24px;
-  color: #999999;
+  color: #005887;
   line-height: 29px;
   padding: 10px;
 }
@@ -87,21 +87,24 @@ a {
 }
 
 #skillsH3 {
-  color: #F5AE23;
+  color: #0071b5;
   display: none;
+  font-size: 16px;
 }
 
 .orange {
-  background-color: #F5AE23;
+  background-color: #E0EEF6;
 }
 
 .orange-text {
-  color: #F5AE23;
+  color: #0071b5;
+  font-size: 14px;
 }
 
 .white-text {
-  font-weight: bold;
+  /* font-weight: bold; */
   color: #FFFFFF;
+  font-size: 14px;
 }
 
 .gray {
@@ -212,4 +215,14 @@ span {
   .biopic {
     display: block;
   }
+}
+
+.img-responsive {
+    max-width:100% !important;
+    max-height:100% !important;
+    display:block;
+}
+
+.myTitle {
+  color: #1199C3;
 }
