@@ -1,9 +1,12 @@
+
 // Udacity - Project 2: Interactive Resume
 // Kris Hamilton - April 2015
 // - Resourced information and guidance from Udacity Forums, Udacity Courses, Google, Github and prior knowledge
 
 
 //Here we go...
+
+"use strict";
 
 // Storing JSON data/objects for Bio into an object called 'bio'
 var bio = {
@@ -19,15 +22,13 @@ var bio = {
 	"welcomeMessage": "A Business Analyst, Web Developer, Musician and Pebbler",
 	"skills": ["Business Analysis", "HTML/CSS", "PHP/MySQL", "Pebble Development", "Digital Jedi"],
 	"bioPic": "images/kris.jpg"
-}
+};
 
 // Function to append Bio data/objects from the 'bio' object
-bio.display = function() {
+bio.display = function () {
 	var formattedName = HTMLheaderName.replace("%data%", bio.name);
 	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-	$("#header")
-		.prepend(formattedRole)
-		.prepend(formattedName);
+	$("#header").prepend(formattedRole).prepend(formattedName);
 
 	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
 	var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
@@ -36,19 +37,9 @@ bio.display = function() {
 	var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 
 	// Found this was a quicker way to append multiple objects to an id
-	$("#topContacts")
-		.append(formattedMobile)
-        .append(formattedEmail)
-        .append(formattedTwitter)
-        .append(formattedGithub)
-        .append(formattedLocation);
+	$("#topContacts").append(formattedMobile).append(formattedEmail).append(formattedTwitter).append(formattedGithub).append(formattedLocation);
 
-    $("#footerContacts")
-    	.append(formattedMobile)
-        .append(formattedEmail)
-        .append(formattedTwitter)
-        .append(formattedGithub)
-        .append(formattedLocation);
+    $("#footerContacts").append(formattedMobile).append(formattedEmail).append(formattedTwitter).append(formattedGithub).append(formattedLocation);
 
 	var formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
 	var formattedMessage = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
@@ -64,7 +55,7 @@ bio.display = function() {
 	        });
 	    }	
 	}
-}
+};
 
 // Storing JSON data/objects for Work into an object called 'work'
 var work = {
@@ -84,11 +75,11 @@ var work = {
 			"description": "Gathering business requirements and working with stakeholder and vendors to implement enhancements to the companies core loyalty platform"
 		}
 	]
-}
+};
 
 // Function to append Work data/objects from the 'work' object
-work.display = function() {
-	for (job in work.jobs) {
+work.display = function () {
+	for (var job in work.jobs) {
 		$("#workExperience").append(HTMLworkStart);
 
 		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -105,7 +96,7 @@ work.display = function() {
 		$(".work-entry:last").append(formattedLocation);
 		$(".work-entry:last").append(formattedDescription);
 	}
-}
+};
 
 // Storing JSON data/objects for Education into an object called 'education'
 var education = {
@@ -133,10 +124,10 @@ var education = {
 			"url": "http://codeacademy.com"
 		}
 	]
-}
+};
 
 // Function to append Education data/objects from the 'education' object
-education.display = function(){
+education.display = function (){
     education.schools.forEach(function(school) {
         $("#education").append(HTMLschoolStart);
         var formattedSchoolName = HTMLschoolName.replace("%data%", school.name).replace('#', school.url);
@@ -156,14 +147,11 @@ education.display = function(){
     if (education.onlineSchool.length > 0) {
         $(".education-entry").append(HTMLonlineClasses);
         education.onlineSchool.forEach(function (course) {
-            var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", course.title).replace('#', course.url);;
+            var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", course.title).replace('#', course.url);
             var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", course.school);
             var formattedOnlineDates = HTMLonlineDates.replace("%data%", course.dates);
 
-            $(".education-entry:last")
-                .append(formattedOnlineTitle + formattedOnlineSchool)
-                .append(formattedOnlineDates)
-                .append('<br>');
+            $(".education-entry:last").append(formattedOnlineTitle + formattedOnlineSchool).append(formattedOnlineDates).append('<br>');
         });
     }
 };
@@ -184,11 +172,11 @@ var projects = {
 			"images": ["images/theBand.jpg"]
 		}
 	]
-}
+};
 
 // Function to append Projects data/objects from the 'projects' object
-projects.display = function() {
-	for(project in projects.projects) {
+projects.display = function () {
+	for(var project in projects.projects) {
 		$("#projects").append(HTMLprojectStart);
 		
 		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
@@ -199,13 +187,13 @@ projects.display = function() {
 		$(".project-entry:last").append(formattedDescription);
 		
 		if (projects.projects[project].images.length > 0) {
-			for (image in projects.projects[project].images) {
+			for (var image in projects.projects[project].images) {
 				var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
 				$(".project-entry:last").append(formattedImage);
 			}
 		}
 	}
-}
+};
 
 // Click tracker - logging the users mouse clicks
 $(document).click(function(loc) { 
@@ -215,7 +203,7 @@ $(document).click(function(loc) {
 });
 
 
-// Localisation Button
+// Internationalize Button
 // 		Note: I had to update helper.js as per stated in the forum link -
 // 		http://forums.udacity.com/questions/100250412/uncaught-typeerror-cannot-read-property-touppercase-of-undefined
 function inName(name) {

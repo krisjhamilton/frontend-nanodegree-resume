@@ -19,11 +19,16 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <meta charset="utf-8">
 
   <!-- Tells the browser what the title of this page should be. -->
-  <title>Resume</title>
+  <title>Interactive Resume</title>
 
-    <!-- Load the page styles. -->
-    
+  <!-- Load the page styles, including Bootstrap CSS to make use of the Navbar-->
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+  <!-- loaded after the Bootstrap to ensure these styles override where necessary -->
   <link href="css/style.css" rel="stylesheet" type="text/css">
+
+
   <!--
   jQuery is a common JavaScript library for reading and making changes to the
   Document Object Model (DOM). The DOM is a tree that contains information
@@ -42,6 +47,11 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <!-- More on helper.js in the class -->
   <script src="js/helper.js"></script>
 
+  <!-- Extra JS libraries and scripts to make use of the Navbar and single page scolling -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/scrolling-nav.js"></script>
+
   <!--
   Uncomment the <script> tag below when you're ready to add an interactive
   Google Map to your resume!
@@ -51,8 +61,46 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <meta name="viewport" content="width=device-width" initial-scale="1">
 </head>
 <body unresolved>
+  <!-- Navigation for mobile and small screens only-->
+    <nav class="navbar navbar-default navbar-fixed-top visible-xs" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#main">Interactive Resume</a>
+            </div>
+
+            <!-- Collect the nav links for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a class="page-scroll" href="#main"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#workExperience">Work Experience</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#projects">Projects</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#education">Education</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#mapDiv">Where</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
   <div id="main">
-    
+    <div class="container">
 
     <!--
     Everything from here to the <script> tag below is the skeleton of your
@@ -81,6 +129,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
         <ul id="footerContacts" class="flex-box">
       </ul>
     </div>
+  </div>
   </div>
 
   <!--
@@ -136,5 +185,6 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
       document.getElementById('mapDiv').style.display = 'none';
     }
   </script>
+
 </body>
 </html>
